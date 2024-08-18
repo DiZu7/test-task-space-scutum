@@ -1,12 +1,13 @@
 import React from 'react';
-import TodoList from './components/TodoList';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import TodoListPage from '~/pages/TodoListPage';
 
 const App = () => {
   return (
-    <BrowserRouter basename="/todolist/">
+    <BrowserRouter basename="/test-task-space-scutum">
       <Routes>
-        <Route path="/" element={<TodoList />} />
+        <Route path="/" element={<TodoListPage />} />
       </Routes>
     </BrowserRouter>
   );

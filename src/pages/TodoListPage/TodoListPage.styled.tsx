@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TodoListContainer = styled.div`
+export const TodoListPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 3rem auto;

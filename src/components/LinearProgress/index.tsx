@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ProgressContainer, ProgressBar } from './LinearProgress.styled';
+import * as SC from './LinearProgress.styled';
 
 const LinearProgress: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -13,9 +13,9 @@ const LinearProgress: React.FC = () => {
   }, []);
 
   return (
-    <ProgressContainer>
-      <ProgressBar $progress={progress} />
-    </ProgressContainer>
+    <SC.ProgressContainer>
+      <SC.ProgressBar $progress={progress} />
+    </SC.ProgressContainer>
   );
 };
 

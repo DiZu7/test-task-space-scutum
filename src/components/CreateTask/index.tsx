@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useState } from 'react';
-import { CreateTaskButton, CreateTaskForm, CreateTaskInput } from './CreateTask.styled';
-import { useCreateTaskMutation } from '../../services/mockapi';
+
+import { useCreateTaskMutation } from '~/services/mockapi';
+
+import * as SC from './CreateTask.styled';
 
 const CreateTask = () => {
-  
   const [inputValue, setInputValue] = useState<string>('');
 
   const [createTask] = useCreateTaskMutation();
@@ -20,10 +21,10 @@ const CreateTask = () => {
   };
 
   return (
-    <CreateTaskForm onSubmit={handleSubmit}>
-      <CreateTaskInput value={inputValue} onChange={handleInputChange} />
-      <CreateTaskButton>Add</CreateTaskButton>
-    </CreateTaskForm>
+    <SC.CreateTaskForm onSubmit={handleSubmit}>
+      <SC.CreateTaskInput value={inputValue} onChange={handleInputChange} />
+      <SC.CreateTaskButton>Add</SC.CreateTaskButton>
+    </SC.CreateTaskForm>
   );
 };
 

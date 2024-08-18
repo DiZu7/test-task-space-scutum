@@ -1,7 +1,8 @@
 import React from 'react';
-import { PaginationButton, PaginationContainer, PaginationInfo } from './Pagination.styled';
 
-interface PaginationProps {
+import * as SC from './Pagination.styled';
+
+type PropsType = {
   currentPage: number;
   totalItems: number;
   itemsPerPage: number;
@@ -9,22 +10,29 @@ interface PaginationProps {
   goNext(): void;
 }
 
-const Pagination = ({ currentPage, itemsPerPage, totalItems, goPrev, goNext }: PaginationProps) => {
+const Pagination: React.FC<PropsType> = ({
+  currentPage,
+  itemsPerPage,
+  totalItems,
+  goPrev,
+  goNext,
+}) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const showPrevButton = currentPage !== 1;
   const showNextButton = currentPage * itemsPerPage < totalItems;
+
   return (
-    <PaginationContainer>
-      <PaginationButton onClick={goPrev} disabled={!showPrevButton}>
+    <SC.PaginationContainer>
+      <SC.PaginationButton onClick={goPrev} disabled={!showPrevButton}>
         &larr;
-      </PaginationButton>
-      <PaginationInfo>
+      </SC.PaginationButton>
+      <SC.PaginationInfo>
         {currentPage} of {totalPages}
-      </PaginationInfo>
-      <PaginationButton onClick={goNext} disabled={!showNextButton}>
+      </SC.PaginationInfo>
+      <SC.PaginationButton onClick={goNext} disabled={!showNextButton}>
         &rarr;
-      </PaginationButton>
-    </PaginationContainer>
+      </SC.PaginationButton>
+    </SC.PaginationContainer>
   );
 };
 

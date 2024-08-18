@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Task from '../Task';
-import { List } from './TaskList.styled';
-import {
-  TaskDetails,
-  useGetTasksQuery,
-  useUpdateTaskMutation,
-} from './../../services/mockapi';
-import LinearProgress from '../LinearProgress';
-import Pagination from '../Pagination';
+
+import { useGetTasksQuery, useUpdateTaskMutation, useDeleteTaskMutation } from '~/services/mockapi';
+
+import Task from '~/components/Task';
+import Pagination from '~/components/Pagination';
+import LinearProgress from '~/components/LinearProgress';
+
+import * as SC from './TaskList.styled';
+import { TaskType } from '../Task/type';
 
 const TaskList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,10 +18,11 @@ const TaskList = () => {
 
   const { data, isLoading } = useGetTasksQuery({ page, limit });
   const [updateTask] = useUpdateTaskMutation();
+  const [deleteTask] = useDeleteTaskMutation();
 
   const goPrev = () => {
     const prevPage = page - 1;
-    
+
     setSearchParams({ page: prevPage.toString(), limit: limit.toString() });
   };
 
@@ -31,28 +32,33 @@ const TaskList = () => {
     setSearchParams({ page: nextPage.toString(), limit: limit.toString() });
   };
 
-  const handleTaskStatusChange = (id: string) => {
-    const selectedTask = data?.tasks.find(task => task.id === id);
+  const handleTaskStatusChanged = (task: TaskType) => () => {
+    const updatedTask = {
+      ...task,
+      done: !task.done,
+    };
 
-    if (selectedTask) {
-      const updatedTask: TaskDetails = {
-        ...selectedTask,
-        done: !selectedTask.done,
-      };
+    updateTask(updatedTask);
+  };
 
-      updateTask(updatedTask);
-    }
+  const handleTaskDelete = (id: string) => () => {
+    deleteTask(id);
   };
 
   if (isLoading || !data) return <LinearProgress />;
 
   return (
     <>
-      <List>
+      <SC.List>
         {data.tasks.map(task => (
-          <Task key={task.id} task={task} onChange={handleTaskStatusChange} />
+          <Task
+            key={task.id}
+            task={task}
+            handleCkeckboxClick={handleTaskStatusChanged(task)}
+            handleDeleteClick={handleTaskDelete(task.id)}
+          />
         ))}
-      </List>
+      </SC.List>
       <Pagination
         goPrev={goPrev}
         goNext={goNext}

@@ -1,26 +1,27 @@
 import React from 'react';
+import { TaskType } from './type';
 
-import { ListItem, Label, Checkbox, Checkmark, DeleteButton } from './Task.styled';
-import { TaskDetails, useDeleteTaskMutation } from '../../services/mockapi';
+import * as SC from './Task.styled';
 
-interface TaskProps {
-  task: TaskDetails,
-  onChange(id: string): void;
-}
-
-const Task = ({ task: {id, text, done}, onChange }: TaskProps) => {
-  const [deleteTask] = useDeleteTaskMutation();
-
-  return (
-    <ListItem>
-      <Label $done={done}>
-        <Checkbox checked={done} onChange={() => onChange(id)} />
-        <Checkmark />
-        {text}
-      </Label>
-      <DeleteButton onClick={() => deleteTask(id)} />
-    </ListItem>
-  );
+type PropsType = {
+  task: TaskType;
+  handleCkeckboxClick: () => void;
+  handleDeleteClick: () => void;
 };
+
+const Task: React.FC<PropsType> = ({
+  task: { text, done },
+  handleCkeckboxClick,
+  handleDeleteClick,
+}) => (
+  <SC.ListItem>
+    <SC.Label $done={done}>
+      <SC.Checkbox checked={done} onChange={handleCkeckboxClick} />
+      <SC.Checkmark />
+      {text}
+    </SC.Label>
+    <SC.DeleteButton onClick={handleDeleteClick} />
+  </SC.ListItem>
+);
 
 export default Task;

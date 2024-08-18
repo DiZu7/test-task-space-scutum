@@ -1,23 +1,20 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import configuration from '../configuration';
 
-export interface TaskDetails {
-  id: string;
-  text: string;
-  done: boolean;
-}
+import { TaskType } from '~/components/Task/type';
+import configuration from '~/configuration';
 
-export interface NewTask {
+
+export type NewTask = {
   text: string | undefined;
   done: boolean;
-}
+};
 
 type TasksResponse = {
-  tasks: TaskDetails[];
+  tasks: TaskType[];
   count: number;
 };
 
-export type TasksQuery = {
+type TasksQuery = {
   page: number;
   limit: number;
 };
@@ -25,8 +22,7 @@ export type TasksQuery = {
 export const mockApi = createApi({
   reducerPath: 'mockApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://63949f6986829c49e8225bf8.mockapi.io/api/v1',
-    // baseUrl: `${configuration.apiUrl}/api/v1`,
+    baseUrl: `${configuration.apiUrl}/api/v1`,
   }),
   tagTypes: ['Tasks'],
   endpoints: builder => ({
@@ -49,7 +45,7 @@ export const mockApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
-    updateTask: builder.mutation<void, Partial<TaskDetails>>({
+    updateTask: builder.mutation<void, Partial<TaskType>>({
       query: ({ id, ...body }) => {
         return {
           url: `/tasks/${id}`,
