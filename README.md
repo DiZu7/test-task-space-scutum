@@ -2,7 +2,7 @@
 
 ## TODO list
 
-### [Site link]()
+### [Site link](https://dizu7.github.io/test-task-space-scutum/)
 
 ### The tech stack is:
 
@@ -24,6 +24,7 @@
 To run this project, install it locally using npm:
 
 ```
+git clone https://github.com/DiZu7/test-task-space-scutum.git
 npm install
 npm start (for mode development bundling)
 npm run build (for mode production bundling)
