@@ -2,11 +2,12 @@
   "name": "test-task-space-scutum",
   "version": "1.0.0",
   "main": "index.js",
-  "homepage": "/test-task-space-scutum/",
+  "homepage": "https://DiZu7.github.io/test-task-space-scutum",
   "scripts": {
     "start": "webpack serve --mode=development --devtool source-map --open",
     "build": "webpack --mode=production",
-    "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
