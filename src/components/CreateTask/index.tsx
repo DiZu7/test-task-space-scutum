@@ -3,6 +3,7 @@ import { CreateTaskButton, CreateTaskForm, CreateTaskInput } from './CreateTask.
 import { useCreateTaskMutation } from '../../services/mockapi';
 
 const CreateTask = () => {
+  
   const [inputValue, setInputValue] = useState<string>('');
 
   const [createTask] = useCreateTaskMutation();
@@ -14,7 +15,7 @@ const CreateTask = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    createTask({ text: inputValue, done: false });
+    createTask({ text: inputValue.trim(), done: false });
     setInputValue('');
   };
 

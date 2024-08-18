@@ -1,24 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import configuration from '../configuration';
 
-export interface Task {
+export interface TaskDetails {
   id: string;
   text: string;
   done: boolean;
 }
 
 export interface NewTask {
-  text: string;
+  text: string | undefined;
   done: boolean;
 }
 
-type TasksResponse = Task[];
+type TasksResponse = TaskDetails[];
 
 export const mockApi = createApi({
   reducerPath: 'mockApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://63949f6986829c49e8225bf8.mockapi.io/api/v1',
-    //  baseUrl: `${configuration.apiUrl}`,
+    // baseUrl: `${configuration.apiUrl}/api/v1`,
   }),
   tagTypes: ['Tasks'],
   endpoints: builder => ({
@@ -41,24 +41,22 @@ export const mockApi = createApi({
       }),
       invalidatesTags: ['Tasks'],
     }),
-    //  deleteTask: builder.mutation({}),
-    //  createTask: builder.query<TaskDetails, string>({}),
+    updateTask: builder.mutation<void, Partial<TaskDetails>>({
+      query: ({ id, ...body }) => {
+        return {
+          url: `/tasks/${id}`,
+          method: 'PUT',
+          body,
+        };
+      },
+      invalidatesTags: ['Tasks'],
+    }),
   }),
 });
 
-// export const toggleCompleted = createAsyncThunk(
-// "tasks/toggleCompleted",
-// async (task, thunkAPI) => {
-// try {
-// const response = await axios.put(/tasks/${task.id}, {
-// completed: !task.completed,
-// });
-// return response.data;
-// } catch (e) {
-// return thunkAPI.rejectWithValue(e.message);
-// }
-// }
-// );
-
-
-export const { useGetTasksQuery, useDeleteTaskMutation, useCreateTaskMutation } = mockApi;
+export const {
+  useGetTasksQuery,
+  useDeleteTaskMutation,
+  useCreateTaskMutation,
+  useUpdateTaskMutation,
+} = mockApi;

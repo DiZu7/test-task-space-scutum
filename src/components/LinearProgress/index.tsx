@@ -14,7 +14,7 @@ const LinearProgress: React.FC = () => {
 
   return (
     <ProgressContainer>
-      <ProgressBar progress={progress} />
+      <ProgressBar $progress={progress} />
     </ProgressContainer>
   );
 };

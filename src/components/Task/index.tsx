@@ -6,20 +6,21 @@ import { useDeleteTaskMutation } from '../../services/mockapi';
 interface TaskProps {
   id: string;
   text: string;
+  done: boolean;
+  onChange(id: string): void;
 }
 
-const Task = ({ id, text }: TaskProps) => {
-  const [deleteTask, mutationState] = useDeleteTaskMutation();
+const Task = ({ id, text, done, onChange }: TaskProps) => {
+  const [deleteTask] = useDeleteTaskMutation();
 
   return (
     <ListItem>
-      <Label>
-        {text}
-        <Checkbox />
+      <Label $done={done}>
+        <Checkbox checked={done} onChange={() => onChange(id)} />
         <Checkmark />
+        {text}
       </Label>
       <DeleteButton onClick={() => deleteTask(id)} />
-      {/* <DeleteButton onClick={() => handleDelete(id)} /> */}
     </ListItem>
   );
 };

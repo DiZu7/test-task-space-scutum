@@ -11,17 +11,19 @@ export const ListItem = styled.li`
   }
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<{ $done: boolean }>`
   display: block;
   position: relative;
   padding-left: 2rem;
   cursor: pointer;
   font-size: 1rem;
+  color: ${({ $done }) => ($done ? '#a9a9a9' : '#000')};
+  text-decoration: ${({ $done }) => ($done ? 'line-through' : 'none')};
 `;
 
-export const Checkbox = styled.input.attrs(props => ({
+export const Checkbox = styled.input.attrs({
   type: 'checkbox',
-}))`
+})`
   position: absolute;
   z-index: -1;
   opacity: 0;

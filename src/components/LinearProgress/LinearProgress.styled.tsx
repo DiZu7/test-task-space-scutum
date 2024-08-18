@@ -9,8 +9,8 @@ export const ProgressContainer = styled.div`
   height: 10px;
 `;
 
-export const ProgressBar = styled.div<{ progress: number }>`
-  width: ${({ progress }) => progress}%;
+export const ProgressBar = styled.div<{ $progress: number }>`
+  width: ${({ $progress }) => $progress}%;
   height: 100%;
   background-color: #48872b;
   transition: width 0.3s ease-in-out;
