@@ -18,6 +18,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@types/react-dom": "^18.2.7",
     "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^2.1.4",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.3.2",
@@ -30,10 +31,13 @@
     "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7",
     "@types/react": "^18.2.15",
     "core-js": "^3.18.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.2",
+    "styled-components": "^6.1.12",
     "typescript": "^5.1.6"
   }
 }
