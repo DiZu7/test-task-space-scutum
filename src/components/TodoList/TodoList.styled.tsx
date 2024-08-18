@@ -5,6 +5,7 @@ export const TodoListContainer = styled.div`
   flex-direction: column;
   margin: 3rem auto;
   max-width: 600px;
+  min-height: 650px;
   padding: 1.5rem;
   border-radius: 0.5rem;
   background-color: #fff;

@@ -11,6 +11,7 @@ module.exports = (env, argv) => {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/todolist/',
     },
     module: {
       rules: [
@@ -55,7 +56,7 @@ module.exports = (env, argv) => {
     config.plugins.push(
       new MiniCssExtractPlugin({
         filename: '[name].css',
-      })
+      }),
     );
   }
 

@@ -1,16 +1,14 @@
 import React from 'react';
 
 import { ListItem, Label, Checkbox, Checkmark, DeleteButton } from './Task.styled';
-import { useDeleteTaskMutation } from '../../services/mockapi';
+import { TaskDetails, useDeleteTaskMutation } from '../../services/mockapi';
 
 interface TaskProps {
-  id: string;
-  text: string;
-  done: boolean;
+  task: TaskDetails,
   onChange(id: string): void;
 }
 
-const Task = ({ id, text, done, onChange }: TaskProps) => {
+const Task = ({ task: {id, text, done}, onChange }: TaskProps) => {
   const [deleteTask] = useDeleteTaskMutation();
 
   return (

@@ -12,7 +12,15 @@ export interface NewTask {
   done: boolean;
 }
 
-type TasksResponse = TaskDetails[];
+type TasksResponse = {
+  tasks: TaskDetails[];
+  count: number;
+};
+
+export type TasksQuery = {
+  page: number;
+  limit: number;
+};
 
 export const mockApi = createApi({
   reducerPath: 'mockApi',
@@ -22,8 +30,8 @@ export const mockApi = createApi({
   }),
   tagTypes: ['Tasks'],
   endpoints: builder => ({
-    getTasks: builder.query<TasksResponse, void>({
-      query: () => '/tasks',
+    getTasks: builder.query<TasksResponse, TasksQuery>({
+      query: ({ page, limit }) => `/tasks?page=${page}&limit=${limit}`,
       providesTags: ['Tasks'],
     }),
     deleteTask: builder.mutation<void, string>({
