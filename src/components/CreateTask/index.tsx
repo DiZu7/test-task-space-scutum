@@ -27,7 +27,7 @@ const CreateTask = () => {
   return (
     <SC.CreateTaskForm onSubmit={handleSubmit}>
       <SC.CreateTaskInput value={inputValue} onChange={handleInputChange} />
-      <SC.CreateTaskButton>Add</SC.CreateTaskButton>
+      <SC.CreateTaskButton disabled={inputValue.length === 0}>Add</SC.CreateTaskButton>
     </SC.CreateTaskForm>
   );
 };

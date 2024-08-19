@@ -5,11 +5,11 @@ export const CreateTaskForm = styled.form`
   margin-bottom: 1rem;
 `;
 
-export const CreateTaskInput = styled.input.attrs(props => ({
+export const CreateTaskInput = styled.input.attrs({
   type: 'text',
   name: 'text',
   placeholder: 'Enter a task...',
-}))`
+})`
   flex-grow: 1;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -17,18 +17,18 @@ export const CreateTaskInput = styled.input.attrs(props => ({
   margin-right: 0.75rem;
 `;
 
-export const CreateTaskButton = styled.button.attrs(props => ({
+export const CreateTaskButton = styled.button.attrs({
   type: 'submit',
-}))`
+})`
   padding: 0.5rem 1rem;
   color: #fff;
   background-color: #ffde21;
   border: none;
   border-radius: 0.25rem;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #4cbb17;
+    background-color: ${({ disabled }) => (disabled ? '#ccc' : '#4cbb17')};
   }
 `;
