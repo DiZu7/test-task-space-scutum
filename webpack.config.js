@@ -45,7 +45,8 @@ module.exports = (env, argv) => {
     },
     devServer: {
       historyApiFallback: true,
-      open: true,
+      // open: true,
+      open: ['/test-task-space-scutum/'],
       hot: true,
       port: 8080,
     },

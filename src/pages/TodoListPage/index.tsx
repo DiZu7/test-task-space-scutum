@@ -5,6 +5,7 @@ import CreateTask from '~/components/CreateTask';
 
 import * as SC from './TodoListPage.styled';
 
+// Main page for displaying the todo list
 const TodoListPage = () => {
   return (
     <SC.TodoListPageContainer>

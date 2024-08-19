@@ -17,8 +17,13 @@ const Pagination: React.FC<PropsType> = ({
   goPrev,
   goNext,
 }) => {
+  // Calculate the total number of pages based on the total items and items per page and round up to a larger whole number
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+  // Determine when the Prev button should be enabled.
   const showPrevButton = currentPage !== 1;
+
+  // Determine when the Next button should be enabled.
   const showNextButton = currentPage * itemsPerPage < totalItems;
 
   return (
