@@ -51,7 +51,7 @@ npm start
 4. For production bundling:
 
 ```bash
-`npm run build`
+npm run build
 ```
 
 ### Author
