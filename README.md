@@ -19,7 +19,7 @@ This project is a simple and responsive to-do list application. It allows users 
 - [BEM methodology](https://en.bem.info/methodology/)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [React](https://reactjs.org/)
-- [RTK] (https://redux-toolkit.js.org/rtk-query/overview)
+- [RTK](https://redux-toolkit.js.org/rtk-query/overview)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
