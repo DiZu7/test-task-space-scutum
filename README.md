@@ -1,6 +1,12 @@
 # SPACE SCUTUM test task
 
-## TODO list
+## TODO List Project
+
+This project is a simple and responsive to-do list application. It allows users to:
+
+- **Add new tasks:** Enter a task and add it to your list.
+- **Delete tasks:** Remove tasks that are no longer needed.
+- **Toggle task status:** Mark tasks as done or not done using a checkbox.
 
 ### [Site link](https://dizu7.github.io/test-task-space-scutum/)
 
@@ -13,6 +19,7 @@
 - [BEM methodology](https://en.bem.info/methodology/)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [React](https://reactjs.org/)
+- [RTK] (https://redux-toolkit.js.org/rtk-query/overview)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
@@ -23,11 +30,28 @@
 
 To run this project, install it locally using npm:
 
-```
+1. Clone the repository:
+
+```bash
 git clone https://github.com/DiZu7/test-task-space-scutum.git
+```
+
+2. Install dependencies:
+
+```bash
 npm install
-npm start (for mode development bundling)
-npm run build (for mode production bundling)
+```
+
+3. Run the development server:
+
+```bash
+npm start
+```
+
+4. For production bundling:
+
+```bash
+`npm run build`
 ```
 
 ### Author
